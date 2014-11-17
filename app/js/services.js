@@ -22,12 +22,19 @@ angular.module('myApp.services', ['LocalStorageModule'])
     // Service for caching data with local storage
     .factory("Cache", function (localStorageService) {
         var videoList = 'videoList';
+        var lastSelectedId = 'lastSelectedId';
         return {
             setVideoList: function (list) {
                 localStorageService.set(videoList, list);
             },
             getVideoList: function () {
                 return localStorageService.get(videoList);
+            },
+            getLastSelectedId: function(){
+                return localStorageService.get(lastSelectedId) || 0;
+            },
+            setLastSelectedId: function(id){
+                localStorageService.set(lastSelectedId, id);
             }
         }
     });

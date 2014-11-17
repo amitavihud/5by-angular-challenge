@@ -9,7 +9,8 @@ angular.module('myApp.directives', [])
             restrict: 'E',
             templateUrl: 'directives/video.html',
             scope: {
-                'video': '='
+                'video': '=',
+                remove: '&'
             }
         }
     });

@@ -1,26 +1,50 @@
-<div class="container">
-    <div class="hero-unit">
-        <h1 ng-bind="message"></h1>
-    </div>
-    <form name="addVideoLinkForm" class="form-inline">
-        <label for="youtubeLink">Youtube link:</label>
-        <input id="youtubeLink" ng-init="youtubeLink = 'https://www.youtube.com/watch?v=CZsaEF30rdI'" type="text"
-               ng-model="youtubeLink" placeholder="Youtube video link">
-        <button class="btn btn-success" ng-click="addLink(youtubeLink)">Add</button>
-        <span ng-show="addVideoLinkForm.$error.existence" class="alert alert-error">
-            Video already exists in list
-        </span>
-        <span ng-show="addVideoLinkForm.$error.url" class="alert alert-error">
-            Video link is invalid
-        </span>
+<div class="col-sm-12">
 
-    </form>
-    <div>
-        <ul class="list">
-            <li ng-repeat="vid in videos">
-                <vid video="vid"></vid>
-                <hr/>
-            </li>
-        </ul>
+    <cardflow model="cardflowSnapKinetic" mode="none">
+        <div
+                class="cardflow-card"
+                ng-repeat="video in videos"
+                style="background-image: url( {{video.snippet.thumbnails.medium.url}} )"
+                ng-click="select($index);">
+        </div>
+    </cardflow>
+
+</div>
+<div class="col-sm-12 leftRight">
+    <div class="center-block text-center">
+        <div class="btn-group btn-group-lg">
+            <button class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-left"
+                      ng-click="back()"></span>
+            </button>
+            <button class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-right"
+                      ng-click="next()"></span>
+            </button>
+        </div>
+
     </div>
 </div>
+<div class="col-sm-12">
+    <div class="center-block text-center">
+        <vid video="videos[cardflowSnapKinetic.current]" remove="removeVideo(video)"></vid>
+    </div>
+</div>
+<footer class="footer">
+    <div class="center-block text-center">
+        <form name="addVideoLinkForm" class="">
+            <input class="input-lg col-sm-8" id="youtubeLink"
+                   ng-init="youtubeLink = 'https://www.youtube.com/watch?v=CZsaEF30rdI'"
+                   type="text"
+                   ng-model="youtubeLink" placeholder="Youtube video link">
+            <button class="btn btn-lg btn-success" ng-click="addLink(youtubeLink)">Add</button>
+                <span ng-show="addVideoLinkForm.$error.existence" class="alert alert-danger">
+                    Video already exists in list
+                </span>
+                <span ng-show="addVideoLinkForm.$error.url" class="alert alert-danger">
+                    Video link is invalid
+                </span>
+        </form>
+    </div>
+
+</footer>

@@ -1,7 +1,10 @@
-<img ng-src="{{video.snippet.thumbnails.default.url}}"/>
-
-<span class="video-details">
+<div class="video-details">
     <a ng-href="https://www.youtube.com/watch?v={{video.id}}" target="_blank">{{video.snippet.title}}</a><br/>
     Published at: {{video.snippet.publishedAt}}<br/>
     View count: {{video.statistics.viewCount}}, Likes: {{video.statistics.likeCount}}
-</span>
+</div>
+<div>
+    <button class="btn btn-danger" ng-click="remove({video: video})">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+</div>
