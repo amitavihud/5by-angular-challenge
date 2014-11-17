@@ -2,4 +2,25 @@
     <div class="hero-unit">
         <h1 ng-bind="message"></h1>
     </div>
+    <form name="addVideoLinkForm" class="form-inline">
+        <label for="youtubeLink">Youtube link:</label>
+        <input id="youtubeLink" ng-init="youtubeLink = 'https://www.youtube.com/watch?v=CZsaEF30rdI'" type="text"
+               ng-model="youtubeLink" placeholder="Youtube video link">
+        <button class="btn btn-success" ng-click="addLink(youtubeLink)">Add</button>
+        <span ng-show="addVideoLinkForm.$error.existence" class="alert alert-error">
+            Video already exists in list
+        </span>
+        <span ng-show="addVideoLinkForm.$error.url" class="alert alert-error">
+            Video link is invalid
+        </span>
+
+    </form>
+    <div>
+        <ul class="list">
+            <li ng-repeat="vid in videos">
+                <vid video="vid"></vid>
+                <hr/>
+            </li>
+        </ul>
+    </div>
 </div>
