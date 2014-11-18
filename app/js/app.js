@@ -5,7 +5,7 @@
 angular.module('myApp', ['myApp.controllers', 'myApp.filters', 'myApp.services', 'myApp.directives', 'ui.router', 'angular-cardflow'])
 
     .config( function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("/state1");
+        $urlRouterProvider.otherwise("/");
         $stateProvider.state('home', {
             url: '/',
             templateUrl: 'partials/home.html',
